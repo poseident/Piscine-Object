@@ -1,10 +1,14 @@
 NAME = divideAndConquer
 
+BONUS_SRCS = srcs/Bank_bonus.cpp \
+			 srcs/main_bonus.cpp
+
 SRCS = srcs/main.cpp \
 	   srcs/Bank.cpp \
 	   srcs/Account.cpp
 
 OBJ = $(SRCS:.cpp=.o)
+OBJ_BONUS = $(BONUS_SRCS:.cpp=.o)
 CC = g++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
@@ -19,13 +23,20 @@ $(NAME): $(SRCS) $(OBJ)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 	@echo "$(YELLOW)------done------$(RESET)"
 
-%.o: %.c
+bonus: $(OBJ_BONUS)
+	$(CC) $(FLAGS) $(OBJ_BONUS) -o $(NAME)_bonus
+	@echo "$(YELLOW)------bonus done------$(RESET)"
+
+%.o: %.cpp
 	$(CC) -c $(FLAGS) $< -o $@
 
+clean_bonus:
+	rm -rf $(OBJ_BONUS)
+	@echo "$(YELLOW)Cleaned bonus$(RESET)"
 
 clean:
 	
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) 
 	@echo "$(YELLOW)Cleaned$(RESET)"
 
 fclean: clean
@@ -33,4 +44,4 @@ fclean: clean
 
 re: fclean all 
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus clean_bonus

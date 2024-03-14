@@ -15,7 +15,7 @@ class Account
         double get_value() const;
         void set_value(double value);
     private:
-        Account(int id, int value);
+        Account(int id, double value);
         int _id;
         double _value;
         friend class Bank;
