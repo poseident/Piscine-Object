@@ -56,8 +56,7 @@ void Graph::remove_point(float X, float Y)
 
 void Graph::add_point(float X, float Y)
 {
-    std::cout << this->size.Y << "param " << Y << std::endl; 
-    if (X < this->size.X && Y < this->size.Y)
+    if (X >= 0 && X < this->size.X && Y >= 0 && Y < this->size.Y)
     {
         Vector2 new_point(X, Y);
         this->points.push_back(new_point);
