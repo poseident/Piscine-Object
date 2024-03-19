@@ -2,7 +2,8 @@ NAME = puttingItIntoPractice
 
 SRCS = srcs/main.cpp \
 	   srcs/Worker.cpp \
-	   srcs/Shovel.cpp
+	   srcs/Shovel.cpp \
+	   srcs/Tool.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 CC = g++

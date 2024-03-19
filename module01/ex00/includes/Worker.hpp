@@ -3,22 +3,22 @@
 
 #include "Position.hpp"
 #include "Statistic.hpp"
-#include "Shovel.hpp"
+#include "Tool.hpp"
 #include <iostream>
 
-class Shovel;
+class Tool;
 
 class Worker
 {
     public:
+        Tool *tool;
         Worker();
         ~Worker();
-        void takeShovel(Shovel& shovel);
+        void takeTool(Tool& shovel);
         void takeAway();
         void useShovel();
         void printUse();
     private:
-        Shovel *shovel;
         Position coordonnee;
         Statistic stat;
 };

@@ -1,4 +1,6 @@
 #include "../includes/Worker.hpp"
+#include "../includes/Tool.hpp"
+#include "../includes/Shovel.hpp"
 
 int main()
 {
@@ -8,13 +10,13 @@ int main()
     Worker worker2;
 
     Worker worker3;
-    worker.takeShovel(shovel);
+    worker.takeTool(shovel);
     worker.useShovel();
 
-    shovel.printUse();
+    worker.printUse();
 
-    worker2.takeShovel(shovel);
+    worker2.takeTool(shovel);
     worker2.useShovel();
-    shovel.printUse();
+    worker2.printUse();
 
 }

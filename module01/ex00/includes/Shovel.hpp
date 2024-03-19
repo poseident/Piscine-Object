@@ -1,22 +1,19 @@
 #ifndef SHOVEL_HPP
 #define SHOVEL_HPP
 
-#include "Worker.hpp"
+#include <cstddef>
+#include "Tool.hpp"
 
 class Worker;
 
-class Shovel
+class Shovel : public Tool
 {
     public:
         Shovel();
-        ~Shovel();
-        void use();
-        void printUse();
-        void takeAway();
-        void newWorker(Worker *worker);
-    private:
-        Worker *currentWorker;
-        int numberOfUses;
+        virtual ~Shovel();
+        virtual void printUse() const;
+        virtual void takeAway();
+        virtual void newWorker(Worker *worker);
 };
 
 #endif
