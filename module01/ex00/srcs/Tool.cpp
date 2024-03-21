@@ -8,10 +8,3 @@ void Tool::setCurrentWorker(Worker *worker)
 Tool::Tool(){}
 
 Tool::~Tool(){}
-
-void Tool::use() {
-    // Increment numberOfUses
-    numberOfUses++;
-
-    // Other operations specific to using the tool
-}

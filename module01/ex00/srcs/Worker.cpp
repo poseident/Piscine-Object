@@ -27,7 +27,13 @@ void Worker::takeTool(Tool& newTool)
     newTool.newWorker(this);
 }
 
-void Worker::useShovel()
+void Worker::useTool()
 {
+    this->tool->use();
+}
+
+void Worker::work()
+{
+    std::cout << "worker is working" << std::endl;
     this->tool->use();
 }

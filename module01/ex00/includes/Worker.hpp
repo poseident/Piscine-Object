@@ -16,8 +16,9 @@ class Worker
         ~Worker();
         void takeTool(Tool& shovel);
         void takeAway();
-        void useShovel();
+        void useTool();
         void printUse();
+        void work();
     private:
         Position coordonnee;
         Statistic stat;

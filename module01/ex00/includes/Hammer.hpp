@@ -1,16 +1,14 @@
-#ifndef SHOVEL_HPP
-#define SHOVEL_HPP
+#ifndef HAMMER_HPP
+#define HAMMER_HPP
 
 #include <cstddef>
 #include "Tool.hpp"
 
-class Worker;
-
-class Shovel : public Tool
+class Hammer: public Tool
 {
     public:
-        Shovel();
-        virtual ~Shovel();
+        Hammer();
+        virtual ~Hammer();
         virtual void printUse() const;
         virtual void takeAway();
         virtual void use();

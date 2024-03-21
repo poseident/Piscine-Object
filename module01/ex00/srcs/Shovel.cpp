@@ -4,7 +4,10 @@ Shovel::Shovel() {
     setCurrentWorker(NULL); // Set currentWorker to nullptr initially
 }
 
-Shovel::~Shovel(){}
+Shovel::~Shovel()
+{
+    std::cout << "Shovel destroyed" << std::endl;
+}
 
 void Shovel::newWorker(Worker *newWorker)
 {
@@ -20,5 +23,11 @@ void Shovel::takeAway()
 
 void Shovel::printUse() const
 {
-    std::cout << "nbr of use : " << this->numberOfUses << std::endl;
+    std::cout << "nbr of use for shovel : " << this->numberOfUses << std::endl;
+}
+
+void Shovel::use()
+{
+    this->numberOfUses++;
+    std::cout << "Worker used shovel" << std::endl;
 }
