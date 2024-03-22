@@ -12,13 +12,18 @@ Workshop::~Workshop()
 
 void Workshop::executeWorkDay()
 {
-    std::vector<Worker *>::iterator it;
+    std::vector<Worker *>::iterator it = this->workers.begin();
     std::vector<Worker *>::iterator itEnd = this->workers.end();
 
-    for (it = this->workers.begin(); it != itEnd; ++it)
+    for (; it != itEnd; ++it)
     {
         (*it)->work();
     }
+}
+
+const std::vector<Worker *>& Workshop::getWorker() const
+{
+    return this->workers;
 }
 
 void Workshop::registerWorker(Worker *newWorker)

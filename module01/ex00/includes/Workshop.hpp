@@ -14,6 +14,7 @@ class Workshop
         void registerWorker(Worker *newWorker);
         void releaseWorker(Worker *worker);
         void executeWorkDay();
+        const std::vector<Worker *>& getWorker() const;
     private:
         std::vector<Worker *> workers;
 };

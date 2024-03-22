@@ -1,9 +1,5 @@
 #include "../includes/Shovel.hpp"
 
-Shovel::Shovel() {
-    setCurrentWorker(NULL); // Set currentWorker to nullptr initially
-}
-
 Shovel::~Shovel()
 {
     std::cout << "Shovel destroyed" << std::endl;
@@ -12,8 +8,18 @@ Shovel::~Shovel()
 void Shovel::newWorker(Worker *newWorker)
 {
     if (this->currentWorker)
-        this->currentWorker->takeAway(); // Use arrow operator to call takeAway()
+        this->currentWorker->takeAway(); 
     this->currentWorker = newWorker;
+}
+
+const Worker &Shovel::getCurrentWorker() const
+{
+    return *this->currentWorker;
+}
+
+const int& Shovel::getNumberOfUse() const
+{
+    return this->numberOfUses;
 }
 
 void Shovel::takeAway()

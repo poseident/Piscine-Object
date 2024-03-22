@@ -1,10 +1,5 @@
 #include "../includes/Tool.hpp"
 
-void Tool::setCurrentWorker(Worker *worker)
-{
-    currentWorker = worker;
-}
-
-Tool::Tool(){}
+Tool::Tool(): currentWorker(NULL) ,numberOfUses(0){}
 
 Tool::~Tool(){}

@@ -11,17 +11,21 @@ class Tool;
 class Worker
 {
     public:
-        Tool *tool;
         Worker();
         ~Worker();
-        void takeTool(Tool& shovel);
+        void takeTool(Tool& tool);
         void takeAway();
-        void useTool();
-        void printUse();
-        void work();
+        void useTool() const;
+        void printUse() const;
+        void work() const;
+        //getter
+        const Position& getPosition() const;
+        const Statistic& getStatistic() const;
+        const Tool& getTool() const;
     private:
         Position coordonnee;
         Statistic stat;
+        Tool *tool;
 };
 
 #endif

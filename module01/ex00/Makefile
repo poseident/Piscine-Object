@@ -10,7 +10,7 @@ SRCS = srcs/main.cpp \
 OBJ = $(SRCS:.cpp=.o)
 CC = g++
 
-FLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -std=c++98 #-fsanitize=address
 
 RED	=	\033[1;31m
 YELLOW	=	\033[1;33m

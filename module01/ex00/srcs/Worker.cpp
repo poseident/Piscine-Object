@@ -11,14 +11,34 @@ Worker::~Worker()
     }
 }
 
-void Worker::printUse()
+void Worker::printUse() const
 {
-    this->tool->printUse();
+    if (this->tool)
+        this->tool->printUse();
+    else
+    {
+        std::cerr << "Worker has no Tool" << std::endl;
+    }
 }
 
 void Worker::takeAway()
 {
     this->tool = NULL;
+}
+
+const Position& Worker::getPosition() const
+{
+    return this->coordonnee;
+}
+
+const Statistic& Worker::getStatistic() const
+{
+    return this->stat;
+}
+
+const Tool& Worker::getTool() const
+{
+    return *this->tool;
 }
 
 void Worker::takeTool(Tool& newTool)
@@ -27,13 +47,18 @@ void Worker::takeTool(Tool& newTool)
     newTool.newWorker(this);
 }
 
-void Worker::useTool()
+void Worker::useTool() const
 {
     this->tool->use();
 }
 
-void Worker::work()
+void Worker::work() const
 {
     std::cout << "worker is working" << std::endl;
-    this->tool->use();
+    if (this->tool)
+        this->tool->use();
+    else
+    {
+        std::cout << "Worker has no Tool" << std::endl;
+    }
 }

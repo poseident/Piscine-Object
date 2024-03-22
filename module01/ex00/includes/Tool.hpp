@@ -9,18 +9,18 @@ class Worker;
 
 class Tool
 {
-    friend class Worker;
     protected:
         Worker *currentWorker;
         int numberOfUses;
     public:
         virtual void use() = 0;
-        virtual void printUse() const = 0;  // Add pure virtual declaration for printUse
-        virtual void takeAway() = 0;        // Add pure virtual declaration for takeAway
-        virtual void newWorker(Worker *worker) = 0;  // Add pure virtual declaration for newWorker
-        virtual ~Tool();
+        virtual void printUse() const = 0;  
+        virtual void takeAway() = 0;
+        virtual void newWorker(Worker *worker) = 0;  
+        virtual ~Tool() = 0;
         Tool();
-        void setCurrentWorker(Worker *worker);
+        virtual const Worker &getCurrentWorker() const = 0;
+        virtual const int& getNumberOfUse() const = 0;
 };
 
 #endif

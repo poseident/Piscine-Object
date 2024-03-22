@@ -1,9 +1,5 @@
 #include "../includes/Hammer.hpp"
 
-Hammer::Hammer() {
-    setCurrentWorker(NULL); // Set currentWorker to nullptr initially
-}
-
 Hammer::~Hammer()
 {
     std::cout << "Hammer destroyed" << std::endl;
@@ -12,8 +8,18 @@ Hammer::~Hammer()
 void Hammer::newWorker(Worker *newWorker)
 {
     if (this->currentWorker)
-        this->currentWorker->takeAway(); // Use arrow operator to call takeAway()
+        this->currentWorker->takeAway();
     this->currentWorker = newWorker;
+}
+
+const Worker &Hammer::getCurrentWorker() const
+{
+    return *this->currentWorker;
+}
+
+const int& Hammer::getNumberOfUse() const
+{
+    return this->numberOfUses;
 }
 
 void Hammer::takeAway()
