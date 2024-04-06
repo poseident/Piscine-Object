@@ -31,9 +31,3 @@ void Hammer::printUse() const
 {
     std::cout << "nbr of use Hammer : " << this->numberOfUses << std::endl;
 }
-
-void Hammer::use()
-{
-    this->numberOfUses++;
-    std::cout << "Worker used Hammer" << std::endl;
-}

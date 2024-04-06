@@ -13,7 +13,8 @@ class Tool
         Worker *currentWorker;
         int numberOfUses;
     public:
-        virtual void use() = 0;
+        virtual
+         void use();
         virtual void printUse() const = 0;  
         virtual void takeAway() = 0;
         virtual void newWorker(Worker *worker) = 0;  

@@ -32,8 +32,3 @@ void Shovel::printUse() const
     std::cout << "nbr of use for shovel : " << this->numberOfUses << std::endl;
 }
 
-void Shovel::use()
-{
-    this->numberOfUses++;
-    std::cout << "Worker used shovel" << std::endl;
-}
