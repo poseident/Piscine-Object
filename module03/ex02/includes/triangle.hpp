@@ -7,35 +7,35 @@
 class Triangle: public Shape
 {
     public:
-        Triangle(const float base, const float heigth, const float length): _base(base), _height(heigth), _length(length)
-        {
-            if (_base <= 0 || _height <= 0 || _length <= 0)
-                throw std::invalid_argument("Base or heigth must be positiv");
-            if (_base + _height <= _length || _base + _length <= _height || _height + _length <= 0)
-                throw std::invalid_argument("The sum of any two edges will need to be larger than the third");
-            if (_base < _height)
-                swap(_base, _height);
-            if (_base < _length)
-                swap(_base, _length);
+        static const double mySqrt(double x) {
+            if (x == 0) return 0;
+            double guess = x / 2.0;
+            double prevGuess;
+            do {
+                prevGuess = guess;
+                guess = (guess + x / guess) / 2.0;
+            } while (prevGuess != guess);
+            return guess;
         }
-        virtual const float get_area() const //A =  (b × h) /2
+
+        Triangle(const double length1, const double length2, const double length3): _length1(length1), _length2(length2), _length3(length3)
         {
-            return (_base * _height) / 2.0;
+            if (_length1 <= 0 || length2 <= 0 || _length3 <= 0)
+                throw std::invalid_argument("length1 or length32 must be positiv");
         }
-        virtual const float get_perimeter() const //b + l + h
+        virtual const double get_area() const
         {
-            return (_base + _height + _length);
+            const double semiPerimeter = (_length1 + _length2 + _length3) / 2;
+            return mySqrt(semiPerimeter * (semiPerimeter - _length1) * (semiPerimeter - _length2) * (semiPerimeter - _length3));
+        }
+        virtual const double get_perimeter() const 
+        {
+            return (_length1 + _length2 + _length3);
         }
     private:
-        float _base;
-        float _height;
-        float _length;
-        void swap(float& a, float& b)
-        {
-            float temp = a;
-            a = b;
-            b = temp;
-        } 
+        const double _length1;
+        const double _length2;
+        const double _length3;
 };
 
 #endif
