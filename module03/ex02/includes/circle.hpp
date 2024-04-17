@@ -7,13 +7,13 @@ class Circle: public Shape
 {
     public:
         Circle(const double ray): _ray(ray) {};
-        virtual const double get_area() const //  π r²
+        virtual void get_area() const //  π r²
         {
-            return (3.14159 * (_ray * _ray));
+            std::cout << "area of circle : " << (3.14159 * (_ray * _ray)) << std::endl;
         }
-        virtual const double get_perimeter() const //2×π×radius
+        virtual void get_perimeter() const //2×π×radius
         {
-            return (2 * 3.14159 * _ray); 
+            std::cout << "perimeter of circle : " << (2 * 3.14159 * _ray) << std::endl;
         }
     private:
         const double _ray;

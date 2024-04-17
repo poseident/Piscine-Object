@@ -7,8 +7,8 @@
 class Shape
 {
     public:
-        virtual const double get_area() const = 0;
-        virtual const double get_perimeter() const = 0;
+        virtual void get_area() const = 0;
+        virtual void get_perimeter() const = 0;
     private:
 };
 

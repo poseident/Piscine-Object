@@ -7,13 +7,13 @@ class Rectangle: public Shape
 {
     public:
         Rectangle(const double length, const double width): _length(length), _width(width) {};
-        virtual const double get_area() const //l x w
+        virtual void get_area() const //l x w
         {
-            return _length * _width;
+            std::cout << "area of rectangle : " << _length * _width << std::endl;
         }
-        virtual const double get_perimeter() const //Perimeter=2×(length+width)
+        virtual void get_perimeter() const //Perimeter=2×(length+width)
         {
-            return 2 * (_length + _width);
+            std::cout << "perimeter of rectangle : " << 2 * (_length + _width) << std::endl;
         }
     private:
         const double _length;

@@ -23,14 +23,15 @@ class Triangle: public Shape
             if (_length1 <= 0 || length2 <= 0 || _length3 <= 0)
                 throw std::invalid_argument("length1 or length32 must be positiv");
         }
-        virtual const double get_area() const
+        virtual void get_area() const
         {
             const double semiPerimeter = (_length1 + _length2 + _length3) / 2;
-            return mySqrt(semiPerimeter * (semiPerimeter - _length1) * (semiPerimeter - _length2) * (semiPerimeter - _length3));
+            const double area = mySqrt(semiPerimeter * (semiPerimeter - _length1) * (semiPerimeter - _length2) * (semiPerimeter - _length3));
+            std::cout << "area of triangle : " << area << std::endl;
         }
-        virtual const double get_perimeter() const 
+        virtual void get_perimeter() const 
         {
-            return (_length1 + _length2 + _length3);
+            std::cout << "perimeter of triangle : " << (_length1 + _length2 + _length3) << std::endl;
         }
     private:
         const double _length1;
