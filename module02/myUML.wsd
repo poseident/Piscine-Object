@@ -1,5 +1,0 @@
-@startuml test
-actor "Web user" as WebUser
-participant "Front End" as Portal
-
-@enduml
