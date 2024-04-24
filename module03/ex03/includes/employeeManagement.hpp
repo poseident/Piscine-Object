@@ -4,6 +4,7 @@
 #include "employee.hpp"
 #include <map>
 #include <iostream>
+#include "hourlyEmployee.hpp"
 
 class EmployeeManager
 {
@@ -28,8 +29,8 @@ class EmployeeManager
             else
                 throw std::runtime_error("Employee not found");
         }
-        Employee& createEmployee(int hourly_value){
-            Employee* new_employee = new Employee(_nextId, hourly_value);
+        Employee& createTempEmployee(double hourly_value){
+            Employee* new_employee = new HourlyEmployee::TempWorker(_nextId, hourly_value);
            addEmployee(new_employee);
             return *new_employee;
         }
@@ -40,8 +41,14 @@ class EmployeeManager
             else
                 throw std::runtime_error("Employee not found");
         }
-        void executeWorkday();
-        void calculatePayroll();
+        void executeWorkday(){
+            for (std::map<int, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it)
+                it->second->executeWorkday();
+        }
+        void calculatePayroll(){
+            for (std::map<int, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it)
+                ;
+        }
     private:
         int _nextId;
         std::map<int, Employee*> _employees;
