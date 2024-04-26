@@ -2,6 +2,9 @@
 #define ILOGGER_HPP
 
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <ctime>
 
 class ILogger
 {
