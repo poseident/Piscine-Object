@@ -6,35 +6,27 @@
 class Employee
 {
     public:
-        Employee(const double hourlyValue): _id(id_counter++), _hourlyValue(hourlyValue), _workedHours(0) {}
+        Employee(const std::string name, const int hourlyValue): _name(name), _hourlyValue(hourlyValue) {}
+
         virtual ~Employee() {}
-        int executeWorkday(){
-            _workedHours += 7;
-            return  7;
+
+        virtual int executeWorkday() {
+            std::cout << _name << ": is working" << std::endl;
+            return 0;
         }
-        void work(const int hours) {
-            _workedHours += hours;
-        };
-        int getId() {
-            return _id;
-        }
+
         int getHourlyValue() {
             return _hourlyValue;
         }
-        virtual double getWorkedHours() {
-            return _workedHours;
-        }
-        int getPayroll() {
-            return _workedHours * _hourlyValue;
-        }
-    private:
-        const int _id;
-        int _hourlyValue;
-        static int id_counter;
-    protected:
-        double _workedHours;
-};
 
-int Employee::id_counter = 1;
+        std::string getName() {
+            return _name;
+        }
+
+        virtual int calculePayroll() const = 0;
+    protected:
+        int _hourlyValue;
+        std::string _name;
+};
 
 #endif

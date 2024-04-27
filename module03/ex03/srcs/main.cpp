@@ -5,23 +5,21 @@
 int main () {
     EmployeeManager manager;
 
+    TempWorker *tempWorker = new TempWorker("bob", 12);
+    Apprentice *apprentice = new Apprentice("jean", 8);
+    ContractEmployee *contractedEmployee = new ContractEmployee("pascal", 15);
 
-    SalariedEmployee::ContractEmployee *contractEmployee = new SalariedEmployee::ContractEmployee(10);
-    manager.addEmployee(contractEmployee);
-    SalariedEmployee::Apprentice *apprentice = new SalariedEmployee::Apprentice(7);
-    manager.addEmployee(apprentice);
-    HourlyEmployee::TempWorker *tempWorker = new HourlyEmployee::TempWorker(12);
     manager.addEmployee(tempWorker);
+    manager.addEmployee(apprentice);
+    manager.addEmployee(contractedEmployee);
 
     manager.executeWorkday();
     manager.calculatePayroll();
 
-    manager.mobilizeTempWorker(tempWorker, 3);
-    manager.calculatePayroll();
-
-    contractEmployee->addUnworkedHours(8);
-    apprentice->addSchoolHours(6);
+    manager.mobilizeTempWorker(tempWorker, 1);
+    apprentice->registerSchoolHours(2);
 
     manager.calculatePayroll();
+
     return 0;
 }

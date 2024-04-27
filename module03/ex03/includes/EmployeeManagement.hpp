@@ -7,20 +7,21 @@
 #include "HourlyEmployee.hpp"
 #include "SalariedEmployee.hpp"
 
-class TempWorker;
 
 class EmployeeManager
 {
     public:
-        EmployeeManager() : _nextId(1) {}
+        EmployeeManager() {}
+
         ~EmployeeManager(){
-            for (std::map<int, Employee*>::iterator it = _employees.begin(); it != _employees.end(); ++it)
+            for (std::map<std::string, Employee*>::iterator it = _employees.begin(); it != _employees.end(); ++it)
             {
                 delete it->second;
             }
         }
+
         void removeEmployee(Employee* employee){
-            std::map<int, Employee*>::iterator it = _employees.find(employee->getId());
+            std::map<std::string, Employee*>::iterator it = _employees.find(employee->getName());
             if (it != _employees.end()){
                 delete it->second;
                 _employees.erase(it);
@@ -29,35 +30,28 @@ class EmployeeManager
                 throw std::runtime_error("Employee not found");
         }
 
-        void mobilizeTempWorker(Employee *tempWorker, int hours) {
-            tempWorker->work(hours);
+        void addEmployee(Employee* addEmployee){
+            _employees[addEmployee->getName()] = addEmployee;
+        }
+    
+        void mobilizeTempWorker(TempWorker *worker, int hours)
+        {
+            worker->mobilized(hours);
         }
 
-        void addEmployee(Employee* addEmployee){
-            _employees[_nextId] = addEmployee;
-            _nextId++;
-        }
-        const Employee& getEmployeeById(int id) const {
-            std::map<int, Employee*>::const_iterator it = _employees.find(id);
-            if (it != _employees.end())
-                return *(it->second);
-            else
-                throw std::runtime_error("Employee not found");
-        }
         void executeWorkday(){
-            for (std::map<int, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it)
+            for (std::map<std::string, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it)
                 it->second->executeWorkday();
         }
+
         void calculatePayroll(){
-            for (std::map<int, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it) {
-                std::cout << "Employee " << it->second->getId() << " worked " << it->second->getWorkedHours() << " hours" << std::endl;
-                std::cout << "For a hourly salary of " << it->second->getHourlyValue() << std::endl;
-                std::cout << "Salary : " << it->second->getPayroll() << std::endl;
+            for (std::map<std::string, Employee *>::iterator it = _employees.begin(); it != _employees.end(); ++it) {
+                std::cout << it->second->getName() << ": payroll = " << it->second->calculePayroll() << std::endl;
             }
         }
     private:
-        int _nextId;
-        std::map<int, Employee*> _employees;
+        int _day_counter;
+        std::map<std::string, Employee*> _employees;
 };
 
 #endif
