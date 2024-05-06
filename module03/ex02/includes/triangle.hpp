@@ -1,5 +1,5 @@
 #ifndef TRIANGLE_HPP
-#define TRIANLE_HPP
+#define TRIANGLE_HPP
 
 #include "shape.hpp"
 #include <stdexcept>
@@ -7,7 +7,7 @@
 class Triangle: public Shape
 {
     public:
-        static const double mySqrt(double x) {
+        static double mySqrt(double x) {
             if (x == 0) return 0;
             double guess = x / 2.0;
             double prevGuess;

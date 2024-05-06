@@ -7,11 +7,17 @@
 class PackageReductionDiscount: public Command
 {
     public:
-        PackageReductionDiscount(std::string article, std::string date, std::string client): Command(article, date, client) {}
+        PackageReductionDiscount(std::vector<std::pair<std::string, double> > article, std::string client): Command(article, client) {}
         ~PackageReductionDiscount() {}
-        virtual float get_total_price() const{
+        virtual double get_total_price() const{
             std::cout << "applied 10 euros discount because command exceed 150euros" << std::endl;
-            return (30.02);
+            double total;
+            for (long unsigned int i = 0; i < _articles.size(); ++i)
+                total += _articles[i].second;
+            if (total > 150.0)
+                return (total - 10.0);
+            else
+                return total;
         }
 };
 

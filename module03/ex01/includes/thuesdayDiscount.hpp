@@ -7,11 +7,14 @@
 class ThuesdayDiscount: public Command
 {
     public:
-        ThuesdayDiscount(std::string article, std::string date, std::string client): Command(article, date, client) {}
+        ThuesdayDiscount(std::vector<std::pair<std::string, double> > article, std::string client): Command(article, client) {}
         ~ThuesdayDiscount() {}
-        virtual float get_total_price() const{
+        virtual double get_total_price() const{
             std::cout << "Applied 10% because its thuesday" << std::endl;
-            return (10.10);
+            double total = 0.0;
+            for (long unsigned int i = 0; i < _articles.size(); ++i)
+                total += _articles[i].second;
+            return (total - ((total * 10) / 100));
         }
     private:
 };

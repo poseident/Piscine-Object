@@ -3,14 +3,28 @@
 
 #include <string>
 #include <iostream>
+#include <time.h>
+#include <vector>
 
 class Command
 {
     public:
-        Command(std::string article, std::string date, std::string client): id(nextId++) ,_date(date), _client(client), _articles(article) {}
-        virtual float get_total_price() const{
+        virtual ~Command() {}
+        Command(std::vector<std::pair<std::string, double> > article, std::string client): id(nextId++), _client(client), _articles(article)
+        {
+            time_t     now = time(0);
+            struct tm  tstruct;
+            char       buf[80];
+            tstruct = *localtime(&now);
+            strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+            _date = buf;
+        }
+        virtual double get_total_price() const{
             std::cout << "normal command no discount" << std::endl;
-            return (50.20);
+            double total = 0.0;
+            for (long unsigned int i = 0; i < _articles.size(); ++i)
+                total += _articles[i].second;
+            return total;
         }
         int getId() const{
             return this->id;
@@ -21,15 +35,15 @@ class Command
         std::string getClient() const{
             return this->_client;
         }
-        std::string getArticle() const{
+        std::vector<std::pair<std::string, double> > getArticle() const{
             return this->_articles;
         }
     protected:
         static int nextId;
         const int id;
-        const std::string _date;
+        std::string _date;
         const std::string _client;
-        const std::string _articles;
+        std::vector<std::pair<std::string, double> > _articles;
 };
 
 int Command::nextId = 1;
