@@ -6,7 +6,7 @@
 class Employee
 {
     public:
-        Employee(const std::string name, const int hourlyValue): _name(name), _hourlyValue(hourlyValue) {}
+        Employee(const std::string name, const int hourlyValue): _hourlyValue(hourlyValue), _name(name) {}
 
         virtual ~Employee() {}
 

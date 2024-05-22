@@ -50,7 +50,6 @@ class EmployeeManager
             }
         }
     private:
-        int _day_counter;
         std::map<std::string, Employee*> _employees;
 };
 

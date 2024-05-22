@@ -20,7 +20,6 @@ class Car
         Gears gear;
         Brakes brakes;
         Wheels wheels;
-    private:
 };
 
 #endif

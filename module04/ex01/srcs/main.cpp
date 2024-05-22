@@ -4,7 +4,7 @@
 
 int main() {
     StudentList& studentList = StudentList::getInstance();
-    Student student1("John Doe", 20, "S12345");
+    Student student1();
     studentList.add(student1);
 
     std::vector<Student> students = studentList.getAll();

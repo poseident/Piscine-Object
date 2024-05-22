@@ -11,7 +11,7 @@ class PackageReductionDiscount: public Command
         ~PackageReductionDiscount() {}
         virtual double get_total_price() const{
             std::cout << "applied 10 euros discount because command exceed 150euros" << std::endl;
-            double total;
+            double total = 0;
             for (long unsigned int i = 0; i < _articles.size(); ++i)
                 total += _articles[i].second;
             if (total > 150.0)
