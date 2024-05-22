@@ -1,13 +1,16 @@
-#ifndef STUDENTLIST_HPP
-#define STUDENTLIST_HPP
+// path/student_list.h
+#ifndef STUDENT_LIST_H
+#define STUDENT_LIST_H
 
-#include "list.hpp"
+#include "SingetonList.hpp"
+#include "singetons.hpp"
 #include "student.hpp"
 
-class StudentList : public List<student>
-{
-    public:
-    private:
+class StudentList : public Singeton<StudentList>, public SingetonList<Student> {
+public:
+    void validate(const Student& item) const {
+        // Validation logic for Student objects
+    }
 };
 
-#endif
+#endif // STUDENT_LIST_H

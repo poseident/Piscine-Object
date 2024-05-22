@@ -1,19 +1,22 @@
-#ifndef SINGETONS_HPP
-#define SINGETONS_HPP
-
-#include <vector>
+// path/singeton.h
+#ifndef SINGETON_HPP
+#define SINGETON_HPP
 
 template <typename T>
-class Singetons
-{
-    public:
-        static T& getInstance()
-        {
-            static T instance;
-            return instance;
-        }
-    private:
-        Singetons() {}
+class Singeton {
+public:
+    static T& getInstance() {
+        static T instance;
+        return instance;
+    }
+
+protected:
+    Singeton() {}
+    ~Singeton() {}
+
+private:
+    Singeton(const Singeton&);
+    Singeton& operator=(const Singeton&);
 };
 
-#endif
+#endif // SINGLETON_H
