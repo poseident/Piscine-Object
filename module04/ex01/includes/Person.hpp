@@ -12,9 +12,13 @@ class Person
     public:
 	    Person(const std::string& p_name) {
             this->_name = p_name;
-            this->_currentRoom = nullptr;
+            this->_currentRoom = NULL;
         }
+        virtual ~Person() {}
 	    Room* room() {return (_currentRoom);}
+        std::string &getName(){
+            return this->_name;
+        }
 };
 
 #endif

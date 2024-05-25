@@ -14,7 +14,8 @@ class Student : public Person
 	    std::vector<Course*> _subscribedCourse;
 
     public:
-        Student(const std::string& name);
+        Student(const std::string& name): Person(name) {}
+		virtual ~Student() {}
 	    void attendClass(Classroom* p_classroom);
 	    void exitClass();
 	    void graduate(Course* p_course);

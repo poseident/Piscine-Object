@@ -1,4 +1,3 @@
-// path/singeton.h
 #ifndef SINGETON_HPP
 #define SINGETON_HPP
 
@@ -19,4 +18,4 @@ private:
     Singeton& operator=(const Singeton&);
 };
 
-#endif // SINGLETON_H
+#endif // SINGLETON_MIXIN_HPP

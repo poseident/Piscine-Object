@@ -4,6 +4,8 @@
 #include <vector>
 #include "Person.hpp"
 
+class Person;
+
 class Room
 {
     private:
@@ -11,11 +13,14 @@ class Room
 	    std::vector<Person*> _occupants;
 
     public:
-	    Room();
-	    bool canEnter(Person*);
-	    void enter(Person*);
-	    void exit(Person*);
-	    void printOccupant();
+		long long getId() {
+			return this->ID;
+		}
+	    Room(long long id): ID(id) {}
+	    bool canEnter(Person*) {return true;}
+	    void enter(Person*) {}
+	    void exit(Person*) {}
+	    void printOccupant() {}
 };
 
 #endif
