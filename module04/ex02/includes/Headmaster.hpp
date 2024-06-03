@@ -10,6 +10,7 @@ class Headmaster : public Staff
 	    std::vector<Form*> _formToValidate;
 	
     public:
+        Headmaster(const std::string &name) : Staff(name) {}
 	    void receiveForm(Form* p_form);
 };
 

@@ -1,3 +1,4 @@
+
 enum class FormType
 {
 	CourseFinished,
