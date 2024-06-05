@@ -1,26 +1,69 @@
-#ifndef ROOM_HPP
-#define ROOM_HPP
+#pragma once
 
 #include <vector>
-#include "Person.hpp"
+#include <iostream>
 
 class Person;
+class Course;
+class Form;
 
 class Room
 {
     private:
-	    long long ID;
-	    std::vector<Person*> _occupants;
+        long long ID;
+        std::vector<Person*> _occupants;
+        static long long nextID;
 
     public:
-		long long getId() {
-			return this->ID;
-		}
-	    Room(long long id): ID(id) {}
-	    bool canEnter(Person*) {return true;}
-	    void enter(Person*) {}
-	    void exit(Person*) {}
-	    void printOccupant() {}
+        Room();
+        bool canEnter(Person*);
+        void enter(Person*);
+        void exit(Person*);
+        
+        void printOccupant();
 };
 
-#endif
+long long Room::nextID = 1;
+
+class Classroom : public Room
+{
+    private:
+        Course* _currentRoom;
+
+    public:
+        Classroom();
+        void assignCourse(Course* p_course);
+};
+
+class SecretarialOffice: public Room
+{
+    private:
+        std::vector<Form*> _archivedForms;
+
+    public:
+
+};
+
+class HeadmasterOffice : public Room
+{
+    private:
+
+    public:
+
+};
+
+class StaffRestRoom : public Room
+{
+    private:
+
+    public:
+
+};
+
+class Courtyard : public Room
+{
+    private:
+
+    public:
+
+};

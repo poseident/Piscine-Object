@@ -1,8 +1,11 @@
-#ifndef PERSON_HPP
-#define PERSON_HPP
+#pragma once
 
-#include <string>
-#include "Room.hpp"
+#include <iostream>
+#include <vector>
+
+class Room;
+class Course;
+class Classroom;
 
 class Person
 {
@@ -10,15 +13,17 @@ class Person
 	    std::string _name;
 	    Room* _currentRoom;
     public:
-	    Person(const std::string& p_name) {
-            this->_name = p_name;
-            this->_currentRoom = NULL;
-        }
-        virtual ~Person() {}
+	    Person(std::string p_name);
 	    Room* room() {return (_currentRoom);}
-        std::string &getName(){
-            return this->_name;
-        }
 };
 
-#endif
+class Student : public Person
+{
+    private:
+	    std::vector<Course*> _subscribedCourse;
+
+    public:
+	    void attendClass(Classroom* p_classroom);
+	    void exitClass();
+	    void graduate(Course* p_course);
+};

@@ -1,11 +1,9 @@
-#ifndef ROOMLIST_HPP
-#define ROOMLIST_HPP
+#pragma once
 
-#include "SingetonList.hpp"
+#include "singetons.hpp"
 #include "Room.hpp"
-#include "Singeton.hpp"
 
-class RoomList : public Singeton<RoomList>, public SingetonList<Room>
+class RoomList : public Singetons<Room>
 {
     public:
         void validate(const Room&) const {
@@ -16,7 +14,6 @@ class RoomList : public Singeton<RoomList>, public SingetonList<Room>
         ~RoomList() {} // Destructor is private
         RoomList(const RoomList&);
         RoomList& operator=(const RoomList&);
-        friend class Singeton<RoomList>; 
 };
 
 #endif

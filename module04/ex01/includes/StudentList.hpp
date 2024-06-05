@@ -1,12 +1,9 @@
-// path/student_list.h
-#ifndef STUDENT_LIST_H
-#define STUDENT_LIST_H
+#pragma once
 
-#include "SingetonList.hpp"
-#include "student.hpp"
-#include "Singeton.hpp"
+#include "singetons.hpp"
+#include "Person.hpp"
 
-class StudentList : public Singeton<StudentList>, public SingetonList<Student>
+class StudentList : public Singetons<Student>
 {
     public:
         void validate(const Student&) const {
@@ -16,8 +13,7 @@ class StudentList : public Singeton<StudentList>, public SingetonList<Student>
         StudentList() {}  // Constructor is private
         ~StudentList() {} // Destructor is private
         StudentList(const StudentList&);
-        StudentList& operator=(const StudentList&);
-        friend class Singeton<StudentList>;    
+        StudentList& operator=(const StudentList&);   
 };
 
 #endif // STUDENT_LIST_H

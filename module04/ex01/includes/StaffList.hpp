@@ -1,11 +1,9 @@
-#ifndef STAFFLIST_HPP
-#define STAFFLIST_HPP
+#pragma once
 
-#include "SingetonList.hpp"
+#include "singetons.hpp"
 #include "Staff.hpp"
-#include "Singeton.hpp"
 
-class StaffList : public Singeton<StaffList>, public SingetonList<Staff>
+class StaffList : public SingetonList<Staff>
 {
     public:
         void validate(const Staff&) const {

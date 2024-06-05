@@ -1,11 +1,9 @@
-#ifndef CourseLIST_HPP
-#define CourseLIST_HPP
+#pragma once
 
-#include "SingetonList.hpp"
+#include "singetons.hpp"
 #include "Course.hpp"
-#include "Singeton.hpp"
 
-class CourseList : public Singeton<CourseList>, public SingetonList<Course>
+class CourseList : public Singetons<Course>
 {
     public:
         void validate(const Course&) const {
@@ -16,7 +14,6 @@ class CourseList : public Singeton<CourseList>, public SingetonList<Course>
         ~CourseList() {} // Destructor is private
         CourseList(const CourseList&);
         CourseList& operator=(const CourseList&);
-        friend class Singeton<CourseList>;  
 };
 
 #endif

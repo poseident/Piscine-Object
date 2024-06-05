@@ -1,12 +1,21 @@
-// path/student.h
-#ifndef STUDENT_HPP
-#define STUDENT_HPP
+#pragma once
 
-#include "Person.hpp"
+#include <iostream>
 #include <vector>
 
+class Room;
 class Course;
 class Classroom;
+
+class Person
+{
+    private:
+	    std::string _name;
+	    Room* _currentRoom;
+    public:
+	    Person(std::string p_name);
+	    Room* room() {return (_currentRoom);}
+};
 
 class Student : public Person
 {
@@ -14,11 +23,7 @@ class Student : public Person
 	    std::vector<Course*> _subscribedCourse;
 
     public:
-        Student(const std::string& name): Person(name) {}
-		virtual ~Student() {}
 	    void attendClass(Classroom* p_classroom);
 	    void exitClass();
 	    void graduate(Course* p_course);
 };
-
-#endif
