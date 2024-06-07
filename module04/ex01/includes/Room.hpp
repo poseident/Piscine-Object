@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <iostream>
+#include "singletons.hpp"
+
 
 class Person;
 class Course;
@@ -16,6 +18,9 @@ class Room
 
     public:
         Room();
+        long long getID() {
+            return this->ID;
+        }
         bool canEnter(Person*);
         void enter(Person*);
         void exit(Person*);
@@ -66,4 +71,12 @@ class Courtyard : public Room
 
     public:
 
+};
+
+class RoomList : public Singletons<Room *>
+{
+    public :
+        void validate(const Room& item) const {
+			;
+    	}
 };

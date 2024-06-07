@@ -4,12 +4,12 @@
 #include <iostream>
 
 template <typename T>
-class Singetons {
+class Singletons {
     public:
-        static Singleton *getInstance()
+        static Singletons *getInstance()
 	    {
 		    if (_instance == nullptr)
-			    _instance = new Singleton();
+			    _instance = new Singletons();
 		    return _instance;
 	    }
         void add(const T& item) {
@@ -27,14 +27,19 @@ class Singetons {
         virtual void validate(const T& item) const = 0;
 
     protected:
-        Singetons() {}
-        ~Singetons() {}
-        static Singleton *_instance;
-        std::vector<T> _list;
+        Singletons() {}
+        virtual ~Singletons() {}
+        static Singletons *_instance;
+        static std::vector<T> _list;
 
     private:
-        Singetons(const Singetons&);
-        Singetons& operator=(const Singetons&);
+        Singletons(const Singletons&);
+        Singletons& operator=(const Singletons&);
 };
 
-#endif // SINGLETON_LIST_H
+template <typename T>
+Singletons<T>* Singletons<T>::_instance = nullptr;
+
+template <typename T>
+std::vector<T> Singletons<T>::_list;
+
