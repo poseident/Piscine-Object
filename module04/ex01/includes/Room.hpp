@@ -18,17 +18,13 @@ class Room
 
     public:
         Room();
-        long long getID() {
-            return this->ID;
-        }
+        long long getID();
         bool canEnter(Person*);
         void enter(Person*);
         void exit(Person*);
         
         void printOccupant();
 };
-
-long long Room::nextID = 1;
 
 class Classroom : public Room
 {

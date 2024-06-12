@@ -3,6 +3,7 @@
 #include "../includes/Course.hpp"
 #include "../includes/Room.hpp"
 #include "../includes/Person.hpp"
+#include "../includes/Form.hpp"
 
 int main() {
 	StudentList::getInstance()->add(new Student("John"));
@@ -25,6 +26,14 @@ int main() {
 	RoomList::getInstance()->add(new Classroom());
 	RoomList::getInstance()->add(new Classroom());
 
+	std::vector<Student*> list = StudentList::getInstance()->getList();
+
+    // Print the list of students
+    std::cout << "List of students:" << std::endl;
+    for (const Student* studentPtr : list) {
+        // Assuming Student has methods getName() and getID()
+        std::cout << studentPtr->getName() << " - " << studentPtr->getID() << std::endl;
+    }
    
     for (int i = 3; i >= 0; i--)
 	{
@@ -39,6 +48,7 @@ int main() {
 		std::cout << room->getID() << std::endl;
 
 		StudentList::getInstance()->remove(student);
+		std::cout << student->getName() << std::endl;
 		StaffList::getInstance()->remove(staff);
 		CourseList::getInstance()->remove(course);
 		RoomList::getInstance()->remove(room);

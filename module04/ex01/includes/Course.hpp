@@ -26,8 +26,4 @@ class Course
 
 class CourseList : public Singletons<Course *>
 {
-	public :
-		void validate(const Course& item) const {
-			;
-    	}
 };

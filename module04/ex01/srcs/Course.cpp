@@ -2,7 +2,7 @@
 
 Course::Course(std::string p_name) : _name(p_name), _responsable(nullptr), _numberOfClassToGraduate(10), _maximumNumberOfStudent(10)
 {
-    std::cout << "Course : " << this->_name << "was created" << std::endl;
+    std::cout << "Course : " << this->_name << " was created" << std::endl;
 }
 
 void Course::assign(Professor *p_professor)

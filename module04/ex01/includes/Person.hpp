@@ -27,7 +27,7 @@ class Student : public Person
 	    std::vector<Course*> _subscribedCourse;
 
     public:
-		Student(std::string p_name) : Person(p_name) {}
+		Student(std::string p_name);
 	    void attendClass(Classroom* p_classroom);
 	    void exitClass();
 	    void graduate(Course* p_course);
@@ -35,13 +35,4 @@ class Student : public Person
 
 class StudentList : public Singletons<Student *>
 {
-	public :
-		static StudentList* getInstance() {
-        	if (_instance == nullptr)
-            	_instance = new StudentList();
-        	return _instance;
-    	}
-		void validate(const Student& item) const {
-			;
-    	}
 };

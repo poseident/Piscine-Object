@@ -12,20 +12,32 @@ class Singletons {
 			    _instance = new Singletons();
 		    return _instance;
 	    }
-        void add(const T& item) {
+        static void add(const T& item) {
             _list.push_back(item);
         }
 
-        void remove(const T& item) {
-            _list.erase(std::remove(_list.begin(), _list.end(), item), _list.end());
+        static void remove(const T& item) {
+            std::cout << "inside remove method" << std::endl;
+            typename std::vector<T>::iterator it2 = _list.end();
+            for (typename std::vector<T>::iterator it = _list.begin(); it != _list.end(); ++it)
+            {
+                if (*it == item) {
+                    std::cout << item << " removed from the list" << std::endl;
+                    _list.erase(it);
+                }
+            }
         }
 
-        std::vector<T> getAll() const {
+        static std::vector<T> getList() {
             return _list;
         }
 
-        virtual void validate(const T& item) const = 0;
-
+        T operator[](int index)
+        {
+            if (index < 0 || index >= _list.size())
+                throw std::out_of_range("Index out of range");
+            return _list[index];
+        }
     protected:
         Singletons() {}
         virtual ~Singletons() {}
